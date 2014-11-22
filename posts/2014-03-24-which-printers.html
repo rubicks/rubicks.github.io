@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - Which Printers?</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>Which Printers?</h1>
+
+      <div class="info">
+    Posted on March 24, 2014
+    
+</div>
+
+<p>Q. Which printers does cups know about and what’s their stati?</p>
+<p>A. <a href="http://www.cups.org/documentation.php/man-lpstat.html">lpstat</a> knows:</p>
+<p>{% highlight bash %}</p>
+<p>$ lpstat -v device for HP-Color-LaserJet-CP3525: socket://MA-PRINT6-1.pc.fracsec.com:9100</p>
+<p>$ lpstat -a HP-Color-LaserJet-CP3525 accepting requests since Wed 12 Mar 2014 03:09:15 PM EDT</p>
+<p>{% endhighlight %}</p>
+<p>Note that I’m not nearly l33t enough to setup or configure printers on the command line. No, I had to use</p>
+<p>{% highlight bash %} $ system-config-printer {% endhighlight %}</p>
+<p>and step through the GUI. Someday, I’ll figure out how to do it with nothing but bash and cups utilities.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
