@@ -27,9 +27,22 @@
     
 </div>
 
-<p>I got hakyll working.</p>
+<p>I got <a href="hakyll" class="uri">hakyll</a> working.</p>
 <pre><code>$ ghc --make site.hs &amp;&amp; ./site build</code></pre>
 <p>At least, I think I got hakyll working.</p>
+<p>Update: I haven’t got it working yet. Getting <a href="hakyll" class="uri">hakyll</a>, <a href="travis-ci" class="uri">travis-ci</a>, and <a href="github-pages" class="uri">github-pages</a> to work together is… not difficult, but not trivial, either.</p>
+<p>When using hakyll, the working process is as follows:</p>
+<pre><code>$ emacs -nw ./stuff.md    # hack on templates and markdown files
+$ ghc --make site.hs      # create ./site executable
+$ ./site build            # create site artifacts in ./_site/</code></pre>
+<p>From there, getting the contents of <code>./_site/</code> into your github-pages repo is usually left as an exercise to the reader.</p>
+<p>Let’s automate it.</p>
+<p>The idea is to keep two repos: one repo for all the hakyll stuff; another for the github-pages stuff. Every commit to the hakyll repo should be built by Travis. On build failure, Travis notifies me. On success, Travis commits the contents of the <code>/_site/</code> directory to the github-pages repo.</p>
+<p>There’s something wrong with the way <a href="travis-rubicks-blog">travis</a> is handling my <a href="rubicks-blog-gitmodules">.gitmodules</a>.</p>
+<p>I usually <code>git clone</code> my repos from “pushable” URLs; i.e.,</p>
+<pre><code>git@github.com:username/reponame.git</code></pre>
+<p>To manipulate pushable repos, one needs to setup ssh keys—generate the key pair, put the pubkey on github, provide the privkey during authentication. The operative word here is “manipulate”. Any manipulation of the repository via these URLs (noteably including <code>git clone</code>) requires the manipulator to utilize a suitable privkey.</p>
+<p>If travis has no such key pair, then it can’t clone the submodule.</p>
 
     </div>
     <div id="footer">
