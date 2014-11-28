@@ -29,12 +29,12 @@
 
 <p>Q. Which printers does cups know about and what’s their stati?</p>
 <p>A. <a href="http://www.cups.org/documentation.php/man-lpstat.html">lpstat</a> knows:</p>
-<p>{% highlight bash %}</p>
-<p>$ lpstat -v device for HP-Color-LaserJet-CP3525: socket://MA-PRINT6-1.pc.fracsec.com:9100</p>
-<p>$ lpstat -a HP-Color-LaserJet-CP3525 accepting requests since Wed 12 Mar 2014 03:09:15 PM EDT</p>
-<p>{% endhighlight %}</p>
+<pre><code>$ lpstat -v
+device for HP-Color-LaserJet-CP3525: socket://MA-PRINT6-1.pc.fracsec.com:9100
+$ lpstat -a
+HP-Color-LaserJet-CP3525 accepting requests since Wed 12 Mar 2014 03:09:15 PM EDT</code></pre>
 <p>Note that I’m not nearly l33t enough to setup or configure printers on the command line. No, I had to use</p>
-<p>{% highlight bash %} $ system-config-printer {% endhighlight %}</p>
+<pre><code>$ system-config-printer</code></pre>
 <p>and step through the GUI. Someday, I’ll figure out how to do it with nothing but bash and cups utilities.</p>
 
     </div>
