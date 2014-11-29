@@ -32,8 +32,9 @@
 <pre><code>$ emacs -nw ./stuff.md    # hack on templates and markdown files
 $ ghc --make site.hs      # create ./site executable
 $ ./site build            # create site artifacts in ./_site/</code></pre>
-<p>From there, getting the contents of <code>./_site/</code> into your github-pages repo is usually left as an exercise to the reader.</p>
-<p>Let’s automate it. <a href="https://kevinyap.ca/2014/06/deploying-pelican-sites-using-travis-ci/">Similar things</a> have been done before.</p>
+<p>Github likes <a href="http://jekyllrb.com/">jekyll</a>—so much so that jekyll enjoys native support on github-pages. Insofar as I’m aware, jekyll is the only static site generator that github-pages supports. Users of other static site generators (e.g., hakyll and <a href="http://blog.getpelican.com/">pelican</a>) must do things the hard way. For hakyll users, this means getting the contents of <code>./_site/</code> into your github-pages repo.</p>
+<p>Let’s automate it.</p>
+<p>One pelican user, Kevin Yap, managed to do <a href="https://kevinyap.ca/2014/06/deploying-pelican-sites-using-travis-ci/">something similar</a> with his site. <a href="https://github.com/iKevinY/iKevinY.github.io/blob/src/deploy.sh">His deploy script</a> borrows from <a href="http://zonca.github.io/2013/09/automatically-build-pelican-and-publish-to-github-pages.html">earlier work</a> by Andrea Zonca, another pelican user. I adapted Yap’s deploy script to make <a href="https://github.com/rubicks/rubicks-blog/blob/master/deploy.sh">my own</a>.</p>
 
     </div>
     <div id="footer">
