@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - flash sound</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>flash sound</h1>
+
+      <div class="info">
+    Posted on November 30, 2014
+    
+</div>
+
+<p>I had a problem with the sound coming from the flash browser plugin: it wasn’t. Somewhere between youtube and my laptop speakers, the audio was getting dropped. Luckily, <a href="https://bbs.archlinux.org/viewtopic.php?pid=1024050#p1024050">another Arch user</a> has already trouble-shot this problem. Here are the steps I followed:</p>
+<pre><code>$ pacman -S lib32-alsa-plugins lib32-libcanberra-pulse
+$ pkill chromium
+$ nohup chromium &amp;</code></pre>
+<p>I’m glad it’s fixed—the silence was really starting to bother me.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
