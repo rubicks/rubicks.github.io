@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - barry</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>barry</h1>
+
+      <div class="info">
+    Posted on 2014 December 13
+    
+</div>
+
+<p>I made this for you!</p>
+<p>https://github.com/rubicks/barry</p>
+<p>By “this”, I mean a silly little program, and by “you”, I mean computer nerds with too much time on their hands. This is firmly within the scratch-your-own-itch category of software. Here’s how it started…</p>
+<p><a href="https://github.com/Mortis69">Mortis69</a> has been developing <a href="https://github.com/Mortis69/rendera">rendera</a> for a very long time. Rendera is a gui application for image manipulation. I saw rendera on the <a href="http://sourceforge.net/p/forge/helpwanted/">sourceforge “Help Wanted” forums</a>, and in a fit of hubris, I decide I could make a contribution. I’ve never done anything with gui applications, but my arrogance more than makes up for my ignorance.</p>
+<p>Like most gui applications, rendera has various little images that need to be placed on the window. The images need to exist somewhere, so rendera (quite reasonably) keeps them as PNG files in a certain directory. When the program starts, various initializers open the files, read them into memory, and paint them on the screen. It works like gangbusters as long as the files are where the program expects them to be.</p>
+<p>Mortis69 likes to build in-source, so the built binary (again, reasonably) assumes a certain path to the needed PNGs <em>relative to rendera project root directory</em>. Which is fine. It’s better than fine—it works.</p>
+<p>I like to build out-of-source, so that doesn’t work for me. I had a problem. At the time, I didn’t even know what kind of problem it was. “What do you call the files that you need to distribute that aren’t source code, test scripts, or autotoolery.” As I found out, you call them “resource files”.</p>
+<p>Resource files are <a href="http://stackoverflow.com/questions/9242524/data-files-with-gnus-autoconf-and-automake">tricky</a>. Convention dictates you install them into either of the</p>
+<pre><code>${PREFIX}/share
+${PREFIX}/share/${PROJECT_NAME}</code></pre>
+<p>directories. That works great—<em>after</em> you install your thing. The situation is more complicated <em>before</em> installation, like, for instance, when you run the freshly-built binary.</p>
+<p>I’m sure there’s a way to rig autoconf and automake such that you know, at compile-time, where your resources live. I’m sure I’ll figure that out eventually. I probably should have worked on that, but instead I wrote a tool that turns files into source code.</p>
+<p>Why would I do that? I don’t know, really. The whole resource-file thing was just pissing me off and my impatience got the better of me. Turning binary data files into byte arrays is cute trick, and it definitely simplifies any interactions with resources, but it doesn’t scale very well. Or at all.</p>
+<p>I should probably go back to the <a href="https://www.gnu.org/software/automake/manual/automake.html">automake manual</a>.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
