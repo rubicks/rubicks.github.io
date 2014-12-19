@@ -46,7 +46,7 @@ v0.2.0-1-g87dd6e9</code></pre>
 <pre><code>AC_INIT([foobar],
         [m4_esyscmd_s([git describe --always])])</code></pre>
 <p>The benefit to doing it this way (as opposed to shell-substitution) is that the working directory for the command is always the same; namely, the directory that contains <code>configure.ac</code>. With shell substitution, the invocation to <code>git describe</code> only works as intended when the git repository is discoverable from the build directory; i.e, in-source builds and/or out-of-source builds when the git repo is the (eventual) parent.</p>
-<p>Many thanks to cpackham for showing this trick on the <a href="https://github.com/cpackham/git-patch/blob/master/configure.ac"><code>configure.ac</code></a> within the <a href="https://github.com/cpackham/git-patch"><code>git-patch</code></a> project.</p>
+<p>Many thanks to cpackham for showing this trick on the <a href="https://github.com/cpackham/git-patch/blob/master/configure.ac"><code>configure.ac</code></a> within the <a href="https://github.com/cpackham/git-patch"><code>git-patch</code></a> project. There were <a href="https://github.com/search?q=git+describe+extension%3Aac&amp;type=Code">lots of others</a>, but I found cpackham first.</p>
 
     </div>
     <div id="footer">
