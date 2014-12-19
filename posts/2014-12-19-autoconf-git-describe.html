@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>blog by rubicks - ```autotools```, meet ```git describe```</title>
+    <title>blog by rubicks - autoconf git describe</title>
     <link rel="stylesheet" type="text/css" href="../css/default.css" />
   </head>
   <body>
@@ -20,16 +20,16 @@
     </div>
 
     <div id="content">
-      <h1>```autotools```, meet ```git describe```</h1>
+      <h1>autoconf git describe</h1>
 
       <div class="info">
     Posted on 2014 December 19
     
 </div>
 
-<p>You don’t know me, <a href="https://github.com/cpackham">cpackham</a>, but I owe you a debt of gratitude. Let me explain…</p>
+<p>You don’t know me, <a href="https://github.com/cpackham">Chris Packham</a>, but I owe you a debt of gratitude. Let me explain…</p>
 <p>I use autotools. The autotools are <em>The Means</em> by which one configures (and builds and distributes) software. Sure, they’re weird, but they work.</p>
-<p>I also use git. Git is <em>The Means</em> by which one does version control (and branching and releases) on software. I don’t have to apologize for anything with git—it’s universally awesome and everything else sucks hard.</p>
+<p>I also use git. Git is <em>The Means</em> by which one versions (and branches and releases) software. I don’t have to apologize for anything with git—it’s universally awesome and everything else sucks hard.</p>
 <p>Git has the <a href="https://www.kernel.org/pub/software/scm/git/docs/git-tag.html"><code>tag</code></a> and <a href="https://www.kernel.org/pub/software/scm/git/docs/git-describe.html"><code>describe</code></a> sub-commands. Provided you have at least one tag on your repository, you can generate descriptive version names like so:</p>
 <pre><code>rubicks@machine:~/code/barry$ git describe --always --dirty
 v0.2.0-1-g87dd6e9</code></pre>
@@ -46,7 +46,7 @@ v0.2.0-1-g87dd6e9</code></pre>
 <pre><code>AC_INIT([foobar],
         [m4_esyscmd_s([git describe --always])])</code></pre>
 <p>The benefit to doing it this way (as opposed to shell-substitution) is that the working directory for the command is always the same; namely, the directory that contains <code>configure.ac</code>. With shell substitution, the invocation to <code>git describe</code> only works as intended when the git repository is discoverable from the build directory; i.e, in-source builds and/or out-of-source builds when the git repo is the (eventual) parent.</p>
-<p>Many thanks to cpackham for showing this trick on the <a href="https://github.com/cpackham/git-patch/blob/master/configure.ac"><code>configure.ac</code></a> within the <a href="https://github.com/cpackham/git-patch"><code>git-patch</code></a> project. There were <a href="https://github.com/search?q=git+describe+extension%3Aac&amp;type=Code">lots of others</a>, but I found cpackham first.</p>
+<p>Many thanks to Packham for showing this trick on the <a href="https://github.com/cpackham/git-patch/blob/master/configure.ac"><code>configure.ac</code></a> within the <a href="https://github.com/cpackham/git-patch"><code>git-patch</code></a> project. There were <a href="https://github.com/search?q=git+describe+extension%3Aac&amp;type=Code">lots of others</a>, but I found Packham first.</p>
 
     </div>
     <div id="footer">
