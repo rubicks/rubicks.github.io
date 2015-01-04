@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - autotest</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>autotest</h1>
+
+      <div class="info">
+    Posted on 2015 January  4
+    
+</div>
+
+<p>Did you know that <strong>autotest</strong> is a thing? No, not <a href="https://github.com/autotest/autotest"><em>that</em> autotest</a>, <a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Using-Autotest"><em>this</em> autotest</a>. I sure as hell didn’t—not until about a week ago. I have no idea what to make of it. On the plus side:</p>
+<ul>
+<li>it has no external dependencies</li>
+<li>it comes “for free” with <a href="https://www.gnu.org/software/autoconf/">autoconf</a></li>
+<li>it isn’t horribly complicated</li>
+</ul>
+<p>On the minus side:</p>
+<ul>
+<li>it’s still kind of complicated</li>
+<li>it forces you to write unit tests in <a href="https://www.gnu.org/software/m4/">m4</a>.</li>
+<li>not many people use it</li>
+<li>the documentation is pretty thin</li>
+</ul>
+<p>It’s not at all like writing <a href="https://www.gnu.org/software/automake/manual/automake.html#Tests">unit tests with automake</a>. Since autotest is a facility of autoconf, it initializes before automake does. Getting it to initialize properly depends heavily on setting up some <a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Making-testsuite-Scripts">weird boilerplate</a>. You have to</p>
+<ul>
+<li>give autotest its own directory (<code>tests</code> by convention) within your project</li>
+<li>populate <code>tests</code> with
+<ul>
+<li><code>Makefile.am</code> defining certain targets</li>
+<li><code>testsuite.at</code> implementing your unit tests</li>
+</ul></li>
+<li>within <code>configure.ac</code>
+<ul>
+<li>invoke <code>AC_CONFIG_TESTDIR</code> on <code>tests</code></li>
+<li>invoke <code>AC_CONFIG_FILES</code> on <code>tests/Makefile</code></li>
+</ul></li>
+<li>within <code>Makefile.am</code>, add <code>tests</code> to your <code>SUBDIRS</code> variable</li>
+</ul>
+<p>I consider myself to have barely-better-than-average competence with the autotools, but getting this set up was moderately difficult for me. The time investment was a little more than a week, and I can’t say for sure if it was worth it. My m4 skills are almost non-existent—I don’t know if I can maintain a sane testing methodology with an unfamiliar language. Whatever; I did it, I learned something, and maybe I’ve got something worth keeping.</p>
+<p>Check out <a href="barry">my barry project</a> if you want to see what I did.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
