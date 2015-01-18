@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - rendera resource files</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>rendera resource files</h1>
+
+      <div class="info">
+    Posted on 2015 January 17
+    
+</div>
+
+<p>Remember when I was <a href="2014-12-14-barry.html">all excited</a> about <a href="https://github.com/rubicks/barry"><code>barry</code></a>? Remember how I was going to turn all those PNG images into byte-arrays and compile them directly into the <code>rendera</code> executable? What ever happened with that?</p>
+<p>The short story is that it didn’t work out that way. The reasons for this include (but are not limited to) the following:</p>
+<ul>
+<li><a href="https://www.gnu.org/software/automake/manual/automake.html#Subdirectories">recursive automake</a> is <em>really hard</em> to get right</li>
+<li><a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Subdirectories">recursive autoconf</a> is <em>even harder</em> to get right</li>
+</ul>
+<p>This is not to say that such things are impossible. Recall that I managed get automake subdirectories working when I <a href="2015-01-04-autotest.html">started using autotest</a>. That little job, however, was mostly copypasta—I had some (not many) examples from which to steal.</p>
+<p>Building the <code>barry</code> executable as a subproject of <a href="https://github.com/Mortis69/rendera"><code>rendera</code></a> to then use the former to generate source code for the latter—that is what I set out to do.</p>
+<p>I couldn’t find a single example implementation—not <em>one</em>. After many faltering attempts, I discovered that such a thing it is actually possible. Unfortunately, for someone with my meager <a href="https://www.gnu.org/software/m4/">m4</a> skills, the effort required is completely unjustified. Moreover, the <a href="https://github.com/rubicks/rendera/tree/submod-barry">resultant hackery</a> is probably fundamentally broken in ways I will never understand.</p>
+<p>So, I did something else.</p>
+<p>It started as a directory path problem; i.e., the directory hierarchy of build (automake’s <code>$(builddir)</code>) didn’t match that of the installation (autoconf’s <code>$(prefix)</code>). So, if they don’t match, we’ll just make symlinks until do. How, exactly? Why, in <code>configure.ac</code>, of course:</p>
+<pre><code>...
+
+AC_PROG_LN_S
+AC_PROG_MKDIR_P
+
+...
+
+(
+  $MKDIR_P share/rendera &amp;&amp; \
+  cd share/rendera       &amp;&amp; \
+  $LN_S ../../&quot;${srcdir}&quot;/data
+)</code></pre>
+<p>I should probably change that relative path to its absolute equivalent, but, for the moment, it’s working.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
