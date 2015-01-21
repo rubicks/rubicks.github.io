@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - windoze builds</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>windoze builds</h1>
+
+      <div class="info">
+    Posted on 2015 January 21
+    
+</div>
+
+<p>Let’s get one thing out of the way right now. Windows sucks. The reasons are myriad, but I’m not going to get into them. We all know it sucks, just as we all know that Windows users are legion.</p>
+<p>Most of the time, I don’t have to think about that family of operating systems. That’s because, over the course of 16 years, I learned and used Linux distros. It wasn’t always magical, and sometimes it was downright painful, but on average, those distros worked they way they should. Nearly always, any problem I had with any certain distro sprung from my stupidity, inexperience, naivete, etc. With enough googling and poring through documentation, all problems could be solved, or, at the very least, worked around in a sane manner.</p>
+<p>Windows is different. Problems with windows don’t yield to the usual google-the-error-message protocol. Just using Windows is scary. Developing software for Windows is scarier. Developing cross-platform software that supports various Linux distros <em>and</em> the win32 api—that’s downright nightmarish.</p>
+<p>In the free software world, the well-trodden path is to develop initially on Linux (almost always Ubuntu, these days) until the product stabilizes before trying to cross-compile with <a href="http://mingw.org/">mingw</a>. If this is your first such foray into supporting multiple target platforms, then this is also your first introduction to <a href="https://en.wikipedia.org/wiki/Matrix_of_pain">The Matrix of Pain</a>.</p>
+<p>To enumerate your matrix of pain, find the Cartesian product of every set of all compilers (and variations of flags thereto) <em>for every platform</em>. For example, if I wish to support <code>gcc</code> and <code>clang</code> native compilations and <code>mingw</code> cross compilation, then my pain matrix is of size <em>three</em>. Not so bad, right?</p>
+<p>It gets worse. If I want to support release and debug builds of each, that necessitates two sets of flags for each compilier, which doubles the size of the matrix. If I want to support multiple build platforms, the matrix expands by the equivalent factor. Within popular open-source projects, it is not uncommon to see build matrices of dozens of elements.</p>
+<p>That is, in short, what <a href="https://github.com/Mortis69">Mortis69</a> and myself are attempting with <a href="https://github.com/Mortis69/rendera">rendera</a>. It’s not easy. It’s very, very hard. It’s the reason why we don’t have automated Windows builds yet.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
