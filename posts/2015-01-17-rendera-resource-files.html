@@ -35,7 +35,7 @@
 </ul>
 <p>This is not to say that such things are impossible. Recall that I managed get automake subdirectories working when I <a href="2015-01-04-autotest.html">started using autotest</a>. That little job, however, was mostly copypasta—I had some (not many) examples from which to steal.</p>
 <p>Building the <code>barry</code> executable as a subproject of <a href="https://github.com/Mortis69/rendera"><code>rendera</code></a> to then use the former to generate source code for the latter—that is what I set out to do.</p>
-<p>I couldn’t find a single example implementation—not <em>one</em>. After many faltering attempts, I discovered that such a thing it is actually possible. Unfortunately, for someone with my meager <a href="https://www.gnu.org/software/m4/">m4</a> skills, the effort required is completely unjustified. Moreover, the <a href="https://github.com/rubicks/rendera/tree/submod-barry">resultant hackery</a> is probably fundamentally broken in ways I will never understand.</p>
+<p>I couldn’t find a single example implementation—not <em>one</em>. After many faltering attempts, I discovered that such a thing it is actually possible. Unfortunately, for someone with my meager <a href="https://www.gnu.org/software/m4/">m4</a> skills, the effort required is completely unjustified.</p>
 <p>So, I did something else.</p>
 <p>It started as a directory path problem; i.e., the directory hierarchy of build (automake’s <code>$(builddir)</code>) didn’t match that of the installation (autoconf’s <code>$(prefix)</code>). So, if they don’t match, we’ll just make symlinks until do. How, exactly? Why, in <code>configure.ac</code>, of course:</p>
 <pre><code>...
@@ -51,6 +51,7 @@ AC_PROG_MKDIR_P
   $LN_S ../../&quot;${srcdir}&quot;/data
 )</code></pre>
 <p>I should probably change that relative path to its absolute equivalent, but, for the moment, it’s working.</p>
+<p>Update: I deleted the <strong>submod_barry</strong> branch on my rendera repo, but I did manage to get a <a href="https://github.com/rubicks/rendera/tree/submod-fltk">git submodule of FLTK</a> working.</p>
 
     </div>
     <div id="footer">
