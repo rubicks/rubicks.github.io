@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - pipefail</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>pipefail</h1>
+
+      <div class="info">
+    Posted on 2015 February 19
+    
+</div>
+
+<p>I learned about <code>pipefail</code> today. From the <code>bash(1)</code> man page:</p>
+<pre><code>pipefail
+    If set, the return value of a pipeline is the value
+    of the last (rightmost) command to exit with a non-
+    zero  status,  or zero if all commands in the pipeline
+    exit successfully.  This option is disabled by default.</code></pre>
+<p>Basically, it works like this:</p>
+<pre><code>$ set -o | grep pipefail
+pipefail off
+$ false | tee `mktemp`
+$ echo $?
+0
+$ false | tee `mktemp`
+$ echo $PIPESTATUS
+1
+$ set -o pipefail
+$ set -o | grep pipefail
+pipefail on
+$ false | tee `mktemp`
+$ echo $?
+1
+$</code></pre>
+<p>Enabling the <code>pipefail</code> option forces the <em>entire pipeline</em> to return failure if <em>any constituent command</em> returns failure. Otherwise, only the return status of the last (rightmost) command is reported—which may well be success despite some earlier command reporting failure.</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
