@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>blog by rubicks - sysadmin tricks</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <a href="../">rubicks</a>
+      </div>
+      <div id="navigation">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+        <a href="../contact.html">contact</a>
+        <a href="../archive.html">archive</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>sysadmin tricks</h1>
+
+      <div class="info">
+    Posted on 2015 May  6
+    
+</div>
+
+<h5 id="find-out-which-process-is-listening-on-some-port">Find out which process is listening on some port</h5>
+<h6 id="netstat"><code>netstat</code></h6>
+<pre><code>$ netstat -tlpn | head -n2
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto  Recv-Q  Send-Q  Local Address  Foreign Address  State   PID/Program name
+
+$ netstat -tlpn | egrep &quot;:22\b&quot;
+tcp         0       0  0.0.0.0:22     0.0.0.0:*        LISTEN  -
+tcp         0       0  :::22          :::*             LISTEN  -</code></pre>
+<p>Here, we print the program names (<code>-p</code>) of those listening (<code>-l</code>) for incoming tcp (<code>-t</code>) connections showing numeric (<code>-n</code>) host addresses instead of attempting to determine symbolic host, port, or user names</p>
+<h6 id="fuser"><code>fuser</code></h6>
+<pre><code># fuser 631/tcp
+631/tcp:     7807</code></pre>
+<p>Looks like PID 7807 opened tcp port 631.</p>
+<pre><code># ls -l /proc/7807/exe
+lrwxrwxrwx 1 root root 0 May 11 15:06 /proc/7807/exe -&gt; /usr/sbin/cupsd</code></pre>
+<p>PID 7807 is the print server</p>
+
+    </div>
+    <div id="footer">
+      site generated with
+      <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+    </div>
+  </body>
+</html>
