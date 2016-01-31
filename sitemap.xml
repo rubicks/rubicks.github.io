@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://rubicks.github.io/</loc>
+    <lastmod>2015-05-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/05/24/maven-uberjar/</loc>
+    <lastmod>2015-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/05/06/resolv-conf-google-nameservers/</loc>
+    <lastmod>2015-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/05/06/sysadmin-tricks/</loc>
+    <lastmod>2015-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/02/19/pipefail/</loc>
+    <lastmod>2015-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/01/21/windoze-builds/</loc>
+    <lastmod>2015-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/01/17/rendera-resource-files/</loc>
+    <lastmod>2015-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2015/01/04/autotest/</loc>
+    <lastmod>2015-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/12/19/autoconf-git-describe/</loc>
+    <lastmod>2014-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/12/14/barry/</loc>
+    <lastmod>2014-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/12/13/gud-gdb/</loc>
+    <lastmod>2014-12-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/11/30/flash-sound/</loc>
+    <lastmod>2014-11-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/11/22/hakyll/</loc>
+    <lastmod>2014-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/05/06/sox/</loc>
+    <lastmod>2014-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/04/16/xmodmap/</loc>
+    <lastmod>2014-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/04/09/sdiff/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2014/03/24/which-printers/</loc>
+    <lastmod>2014-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2013/10/19/interruptions/</loc>
+    <lastmod>2013-10-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rubicks.github.io/2013/10/06/first-post/</loc>
+    <lastmod>2013-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+</urlset>

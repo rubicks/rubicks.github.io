@@ -1,0 +1,79 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2014/04/16/xmodmap/" title="xmodmap">xmodmap</a></h1>
+  <p>I can&rsquo;t clain I&rsquo;ve been running the Ubuntu distro since the dim dark ages, but I
+have used every release since 6.06 &ldquo;Dapper Drake&rdquo;. Successive upgrades have
+taught me two things:</p>
+
+<ul>
+<li>backup before the upgrade</li>
+<li>fix the X configuration files after the upgrade</li>
+</ul>
+
+<p>The first is just good sense. The last is probably a symptom of my slightly
+uncommon setup. Indeed, I run the <a href="http://www.nongnu.org/ratpoison">ratpoison</a> window manager and
+nearly all of my daily workflow happens in xterm and emacs. I&rsquo;ve run this way
+for the past four years or so.</p>
+
+<p>In that time, every Ubuntu upgrade has consistently broken something about my
+setup. Nearly always, it&rsquo;s my right Alt (Meta, whatever) key behavior. <code>xev</code>
+says my right alt key is <code>ISO_Level3_Shift</code>. This makes for a nice surprise in
+emacs when right-alt-x does NOT give me the <code>M-x</code> I need. The most recent fix
+involved <a href="https://wiki.archlinux.org/index.php/Xmodmap">xmodmap</a> and its <code>~/.Xmodmap</code>:</p>
+
+
+clear Mod1
+keycode 108 = Alt_R NoSymbol Alt_R
+add Mod1 = Alt_L Alt_R
+
+
+<p>Since I already had</p>
+
+
+exec xmodmap .Xmodmap
+
+
+<p>in my <code>~/.ratpoisonrc</code>, I thought I was good. I wasn&rsquo;t. Somehow, the execution
+of xmodmap was failing silently on login. I was just about to give up hope when
+I found <a href="http://askubuntu.com/questions/361128/why-did-13-10-break-my-custom-keyboard-layout">a similarly afflicted user</a>. Apparently, X is recompiling and
+reusing keyboard layouts.</p>
+
+<p>As if that wasn&rsquo;t enough, control-(left|right) was broken in xterm; it wasn&rsquo;t
+skipping words like it should. Copying <code>/etc/inputrc</code> to <code>~/.inputrc</code> fixed it,
+but I have no idea why.</p>
+
+<p>Not cool, Ubuntu. One of these days I&rsquo;ll have to jump ship to <a href="https://archlinux.org/">Arch</a>.</p>
+
+  <p class="small gray"><time datetime="2014-04-16">Apr 16, 2014</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

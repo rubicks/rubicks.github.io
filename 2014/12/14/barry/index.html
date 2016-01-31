@@ -1,0 +1,92 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2014/12/14/barry/" title="barry">barry</a></h1>
+  <p>I made this for you!</p>
+
+<p><a href="https://github.com/rubicks/barry">https://github.com/rubicks/barry</a></p>
+
+<p>By &ldquo;this&rdquo;, I mean a silly little program, and by &ldquo;you&rdquo;, I mean computer nerds
+with too much time on their hands. This is firmly within the
+scratch-your-own-itch category of software. Here&rsquo;s how it started&hellip;</p>
+
+<p><a href="https://github.com/Mortis69">Mortis69</a> has been developing <a href="https://github.com/Mortis69/rendera">rendera</a> for a very long
+time. Rendera is a gui application for image manipulation. I saw rendera on the
+<a href="http://sourceforge.net/p/forge/helpwanted/">sourceforge &ldquo;Help Wanted&rdquo; forums</a>, and in a fit of
+hubris, I decide I could make a contribution. I&rsquo;ve never done anything with gui
+applications, but my arrogance more than makes up for my ignorance.</p>
+
+<p>Like most gui applications, rendera has various little images that need to be
+placed on the window. The images need to exist somewhere, so rendera (quite
+reasonably) keeps them as PNG files in a certain directory. When the program
+starts, various initializers open the files, read them into memory, and paint
+them on the screen. It works like gangbusters as long as the files are where the
+program expects them to be.</p>
+
+<p>Mortis69 likes to build in-source, so the built binary (again, reasonably)
+assumes a certain path to the needed PNGs <em>relative to rendera project root
+directory</em>. Which is fine. It&rsquo;s better than fine&mdash;it works.</p>
+
+<p>I like to build out-of-source, so that doesn&rsquo;t work for me. I had a problem. At
+the time, I didn&rsquo;t even know what kind of problem it was. &ldquo;What do you call the
+files that you need to distribute that aren&rsquo;t source code, test scripts, or
+autotoolery.&rdquo; As I found out, you call them &ldquo;resource files&rdquo;.</p>
+
+<p>Resource files are
+<a href="http://stackoverflow.com/questions/9242524/data-files-with-gnus-autoconf-and-automake">tricky</a>. <a href="http://www.gnu.org/prep/standards/standards.html#Directory-Variables">GNU convention</a> dictates you
+install architecture-independent data files into either of the</p>
+
+<pre><code>${PREFIX}/share
+${PREFIX}/share/${PROJECT_NAME}
+</code></pre>
+
+<p>paths; i.e., the automake-defined <a href="https://www.gnu.org/software/automake/manual/automake.html#Data">data directory variables</a>
+<code>$(datadir)</code> and <code>$(pkgdatadir)</code>, respectively. That works
+great&mdash;<em>after</em> you install your thing. The situation is more complicated
+<em>before</em> installation, like, for instance, when you run the freshly-built
+binary.</p>
+
+<p>I&rsquo;m sure there&rsquo;s a way to rig autoconf and automake such that you know, at
+compile-time, where your resources live. I&rsquo;m sure I&rsquo;ll figure that out
+eventually. I probably should have worked on that, but instead I wrote a tool
+that turns files into source code.</p>
+
+<p>Why would I do that? I don&rsquo;t know, really. The whole resource-file thing was
+just pissing me off and my impatience got the better of me. Turning binary data
+files into byte arrays is cute trick, and it definitely simplifies any
+interactions with resources, but it doesn&rsquo;t scale very well. Or at all.</p>
+
+<p>I should probably go back to the <a href="https://www.gnu.org/software/automake/manual/automake.html">automake manual</a>.</p>
+
+  <p class="small gray"><time datetime="2014-12-14">Dec 14, 2014</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>
