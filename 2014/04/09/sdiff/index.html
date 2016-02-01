@@ -1,0 +1,54 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2014/04/09/sdiff/" title="Merging with sdiff">Merging with sdiff</a></h1>
+  <p>It astounds me that I have been ignorant of <a href="http://linux.die.net/man/1/sdiff"><code>sdiff</code></a> until
+today. The last merging tool I remember using was something called
+<a href="http://meldmerge.org/"><code>meld</code></a>. It ran in a KDE-flavored gui that seemed nice, but it was
+overkill for what I needed; i.e., I didn&rsquo;t know how (or if) it would run in
+bash.</p>
+
+<p>I like emacs <code>M-x ediff</code> as much as the next code monkey, but sometimes you want
+a little tool for a little job.</p>
+
+<pre><code>$ sdiff -o outfile.txt file1.txt file2.txt
+# ... interactive merging session ...
+$ mail -s &quot;merged stuff&quot; boss@bigcorp.com &lt; outfile.txt
+</code></pre>
+
+<p>I wish I had known about this utility earlier. Apparently, Linux Magazine had a
+nice <a href="http://www.linux-mag.com/id/3723/">article</a> about it a while ago. The gnu
+<a href="https://www.gnu.org/software/diffutils/manual/html_node/Invoking-sdiff.html#Invoking-sdiff">documentation</a> is pretty extensive.</p>
+
+  <p class="small gray"><time datetime="2014-04-09">Apr 09, 2014</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

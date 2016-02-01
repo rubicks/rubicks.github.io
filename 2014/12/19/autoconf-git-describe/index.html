@@ -1,0 +1,89 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2014/12/19/autoconf-git-describe/" title="autoconf git describe">autoconf git describe</a></h1>
+  <p>You don&rsquo;t know me, <a href="https://github.com/cpackham">Chris Packham</a>, but I owe you a debt of
+gratitude. Let me explain&hellip;</p>
+
+<p>I use autotools. The autotools are <em>The Means</em> by which one configures (and
+builds and distributes) software. Sure, they&rsquo;re weird, but they work.</p>
+
+<p>I also use git. Git is <em>The Means</em> by which one versions (and branches and
+releases) software. I don&rsquo;t have to apologize for anything with git&mdash;it&rsquo;s
+universally awesome and everything else sucks hard.</p>
+
+<p>Git has the <a href="https://www.kernel.org/pub/software/scm/git/docs/git-tag.html"><code>tag</code></a> and <a href="https://www.kernel.org/pub/software/scm/git/docs/git-describe.html"><code>describe</code></a>
+sub-commands. Provided you have at least one tag on your repository, you can
+generate descriptive version names like so:</p>
+
+<pre><code>rubicks@machine:~/code/barry$ git describe --always --dirty
+v0.2.0-1-g87dd6e9
+</code></pre>
+
+<p>In this example, on the current branch:</p>
+
+<ul>
+<li><code>v0.2.0</code> is the most recent tag</li>
+<li><code>1</code> is the quantity of commits since that tag</li>
+<li><code>g</code> precedes the 7-character abbreviation (<code>87dd6e9</code>) for the most
+recent commit</li>
+</ul>
+
+<p>With <code>autoconf</code>, one specifies version information as the second argument to
+the <a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Initializing-configure"><code>AC_INIT</code></a> function. For example,</p>
+
+<pre><code>AC_INIT([crapware],[0.1.0])
+</code></pre>
+
+<p>would initialize autoconf for the <code>crapware</code> package at version <code>0.1.0</code>.</p>
+
+<p>I got to thinking there must be a way to keep the autoconf package version in
+sync with <code>git describe</code>. There is, and it looks like this:</p>
+
+<pre><code>AC_INIT([foobar],
+        [m4_esyscmd_s([git describe --always])])
+</code></pre>
+
+<p>The benefit to doing it this way (as opposed to shell-substitution) is that the
+working directory for the command is always the same; namely, the directory that
+contains <code>configure.ac</code>. With shell substitution, the invocation to <code>git
+describe</code> only works as intended when the git repository is discoverable from
+the build directory; i.e, in-source builds and/or out-of-source builds when the
+git repo is the (eventual) parent.</p>
+
+<p>Many thanks to Packham for showing this trick on the
+<a href="https://github.com/cpackham/git-patch/blob/master/configure.ac"><code>configure.ac</code></a> within the <a href="https://github.com/cpackham/git-patch"><code>git-patch</code></a>
+project. There were <a href="https://github.com/search?q=git+describe+extension%3Aac&amp;type=Code">lots of others</a>, but I found Packham first.</p>
+
+  <p class="small gray"><time datetime="2014-12-19">Dec 19, 2014</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

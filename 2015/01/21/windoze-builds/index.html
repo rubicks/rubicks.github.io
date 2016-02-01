@@ -1,0 +1,76 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2015/01/21/windoze-builds/" title="windoze builds">windoze builds</a></h1>
+  <p>Let&rsquo;s get one thing out of the way right now:
+<a href="https://duckduckgo.com/?q=windows+sucks">Windows sucks</a>. The reasons are myriad, but I&rsquo;m not going to get
+into them. We all know it sucks, just as we all know that Windows users are
+legion.</p>
+
+<p>Most of the time, I don&rsquo;t have to think about that family of operating
+systems. That&rsquo;s because, over the course of 16 years, I learned and used various
+Linux distros. It was never magical and sometimes painful, but on average, those
+distros worked as advertised. Any Linux problem nearly always sprung from my
+stupidity, inexperience, and/or naivete. With enough google queries and
+reference documentation, a solution (or sane workaround) was possible.</p>
+
+<p>Windows is different. Windows problems don&rsquo;t yield to the usual
+google-the-error-message protocol. Just using Windows is scary. Developing
+software for Windows is scarier. Developing cross-platform software that runs on
+<a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> <em>and</em> <a href="https://en.wikipedia.org/wiki/Windows_API#Win32">win32</a>&mdash;that&rsquo;s downright nightmarish.</p>
+
+<p>In the free software world, the well-trodden path is to develop initially on
+Linux (almost always Ubuntu, these days) until the product stabilizes before
+trying to cross-compile with <a href="http://mingw.org/">mingw</a>. If this is your first such foray
+into supporting multiple target platforms, then this is also your first
+introduction to <a href="https://en.wikipedia.org/wiki/Matrix_of_pain">The Matrix of Pain</a>.</p>
+
+<p>To enumerate your matrix of pain, find the
+<a href="https://en.wikipedia.org/wiki/Cartesian_product">Cartesian product</a> of every set of all compilers (and
+variations of flags thereto) <em>for every platform</em>. For example, if I wish to
+support <code>gcc</code> and <code>clang</code> native compilations and <code>mingw</code> cross compilation,
+then my pain matrix is of size <em>three</em>. Not so bad, right? It gets so much
+worse.</p>
+
+<p>If I want to support release and debug builds, that necessitates two sets of
+flags for each compilier. This doubles the size of the matrix. If I want to
+support multiple build platforms, the matrix expands by the equivalent
+factor. Within popular open-source projects, it is not uncommon to see build
+matrices of dozens of elements.</p>
+
+<p>That is, in short, what <a href="https://github.com/Mortis69">Mortis69</a> and myself are attempting with
+<a href="https://github.com/Mortis69/rendera">rendera</a>. It&rsquo;s not easy. It&rsquo;s very, very hard. It&rsquo;s the reason why we
+don&rsquo;t have automated Windows builds yet.</p>
+
+  <p class="small gray"><time datetime="2015-01-21">Jan 21, 2015</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

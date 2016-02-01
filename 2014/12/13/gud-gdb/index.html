@@ -1,0 +1,55 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2014/12/13/gud-gdb/" title="gud-gdb">gud-gdb</a></h1>
+  <p>Back in the day, emacs users could</p>
+
+<pre><code>M-x gdb
+</code></pre>
+
+<p>and the correct thing would happen. Notably, when the thing being debugged spit
+to stdout, emacs didn&rsquo;t spawn some weird <code>*input/output*</code> buffer. Even
+better, it didn&rsquo;t replace your source code listing buffer with the
+<code>*input/output*</code> buffer it just spawned. These days it&rsquo;s more
+complicated. You have to</p>
+
+<pre><code>M-x gud-gdb
+</code></pre>
+
+<p>if you want the old behavior; i.e., everything happens right on the gdb prompt
+and (most importantly) the source code listing never abruptly disappears.</p>
+
+<p>Thanks, <a href="https://stackoverflow.com/questions/13560933/how-to-turn-off-input-output-buffer-in-gud">stackoverflow</a>!</p>
+
+  <p class="small gray"><time datetime="2014-12-13">Dec 13, 2014</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

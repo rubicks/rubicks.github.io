@@ -1,0 +1,72 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2015/05/06/sysadmin-tricks/" title="sysadmin tricks">sysadmin tricks</a></h1>
+  
+
+<h5 id="find-out-which-process-is-listening-on-some-port:8943b565f56b3ed97c7b12f6692fc6f9">Find out which process is listening on some port</h5>
+
+<h6 id="netstat:8943b565f56b3ed97c7b12f6692fc6f9"><code>netstat</code></h6>
+
+<pre><code>$ netstat -tlpn | head -n2
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto  Recv-Q  Send-Q  Local Address  Foreign Address  State   PID/Program name
+
+$ netstat -tlpn | egrep &quot;:22\b&quot;
+tcp         0       0  0.0.0.0:22     0.0.0.0:*        LISTEN  -
+tcp         0       0  :::22          :::*             LISTEN  -
+</code></pre>
+
+<p>Here, we print the program names (<code>-p</code>)
+of those listening (<code>-l</code>)
+for incoming tcp (<code>-t</code>) connections
+showing numeric (<code>-n</code>) host addresses instead of attempting to determine symbolic host, port, or user names</p>
+
+<h6 id="fuser:8943b565f56b3ed97c7b12f6692fc6f9"><code>fuser</code></h6>
+
+<pre><code># fuser 631/tcp
+631/tcp:     7807
+</code></pre>
+
+<p>Looks like PID 7807 opened tcp port 631.</p>
+
+<pre><code># ls -l /proc/7807/exe
+lrwxrwxrwx 1 root root 0 May 11 15:06 /proc/7807/exe -&gt; /usr/sbin/cupsd
+</code></pre>
+
+<p>PID 7807 is the print server</p>
+
+  <p class="small gray"><time datetime="2015-05-06">May 06, 2015</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

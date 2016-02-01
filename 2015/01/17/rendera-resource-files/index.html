@@ -1,0 +1,93 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2015/01/17/rendera-resource-files/" title="rendera resource files">rendera resource files</a></h1>
+  <p>Remember when I was <a href="2014-12-14-barry.html">all excited</a> about <a href="https://github.com/rubicks/barry"><code>barry</code></a>?
+Remember how I was going to turn all those PNG images into byte-arrays and
+compile them directly into the <code>rendera</code> executable? What ever happened with
+that?</p>
+
+<p>The short story is that it didn&rsquo;t work out that way. The reasons for this
+include (but are not limited to) the following:</p>
+
+<ul>
+<li><a href="https://www.gnu.org/software/automake/manual/automake.html#Subdirectories">recursive automake</a> is <em>really hard</em> to get right</li>
+<li><a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Subdirectories">recursive autoconf</a> is <em>even harder</em> to get right</li>
+</ul>
+
+<p>This is not to say that such things are impossible. Recall that I managed get
+automake subdirectories working when I
+<a href="2015-01-04-autotest.html">started using autotest</a>. That little job, however,
+was mostly copypasta&mdash;I had some (not many) examples from which to steal.</p>
+
+<p>Building the <code>barry</code> executable as a subproject of <a href="https://github.com/Mortis69/rendera"><code>rendera</code></a> to then
+use the former to generate source code for the latter&mdash;that is what I set out
+to do.</p>
+
+<p>I couldn&rsquo;t find a single example implementation&mdash;not <em>one</em>. After many
+faltering attempts, I discovered that such a thing it is actually
+possible. Unfortunately, for someone with my meager <a href="https://www.gnu.org/software/m4/">m4</a> skills, the effort
+required is completely unjustified.</p>
+
+<p>So, I did something else.</p>
+
+<p>It started as a directory path problem; i.e., the directory hierarchy of build
+(automake&rsquo;s <code>$(builddir)</code>) didn&rsquo;t match that of the installation (autoconf&rsquo;s
+<code>$(prefix)</code>). So, if they don&rsquo;t match, we&rsquo;ll just make symlinks until do. How,
+exactly? Why, in <code>configure.ac</code>, of course:</p>
+
+<pre><code>...
+
+AC_PROG_LN_S
+AC_PROG_MKDIR_P
+
+...
+
+(
+  $MKDIR_P share/rendera &amp;&amp; \
+  cd share/rendera       &amp;&amp; \
+  $LN_S ../../&quot;${srcdir}&quot;/data
+)
+</code></pre>
+
+<p>I should probably change that relative path to its absolute equivalent, but, for
+the moment, it&rsquo;s working.</p>
+
+<p>Update: I deleted the <strong>submod_barry</strong> branch on my rendera repo, but I did
+manage to get a <strong>submod_fltk</strong> branch working.</p>
+
+<p>Update: I deleted the <strong>submod_fltk</strong> branch on my rendera repo. The git
+submodule stuff was working. The cross compilation of FLTK was not.</p>
+
+  <p class="small gray"><time datetime="2015-01-17">Jan 17, 2015</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

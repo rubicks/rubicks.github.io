@@ -1,0 +1,88 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/2015/01/04/autotest/" title="autotest">autotest</a></h1>
+  <p>Did you know that <strong>autotest</strong> is a thing? No, not
+<a href="https://github.com/autotest/autotest"><em>that</em> autotest</a>,
+<a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Using-Autotest"><em>this</em> autotest</a>. I sure as hell didn&rsquo;t&mdash;not until about a
+week ago. I have no idea what to make of it. On the plus side:</p>
+
+<ul>
+<li>it has no external dependencies</li>
+<li>it comes &ldquo;for free&rdquo; with <a href="https://www.gnu.org/software/autoconf/">autoconf</a></li>
+<li>it isn&rsquo;t horribly complicated</li>
+</ul>
+
+<p>On the minus side:</p>
+
+<ul>
+<li>it&rsquo;s still kind of complicated</li>
+<li>it forces you to write unit tests in <a href="https://www.gnu.org/software/m4/">m4</a>.</li>
+<li>not many people use it</li>
+<li>the documentation is pretty thin</li>
+</ul>
+
+<p>It&rsquo;s not at all like writing <a href="https://www.gnu.org/software/automake/manual/automake.html#Tests">unit tests with automake</a>. Since
+autotest is a facility of autoconf, it initializes before automake does. Getting
+it to initialize properly depends heavily on setting up some
+<a href="https://www.gnu.org/software/autoconf/manual/autoconf.html#Making-testsuite-Scripts">weird boilerplate</a>. You have to</p>
+
+<ul>
+<li>give autotest its own directory (<code>tests</code> by convention) within your
+project</li>
+<li>populate <code>tests</code> with
+
+<ul>
+<li><code>Makefile.am</code> defining certain targets</li>
+<li><code>testsuite.at</code> implementing your unit tests</li>
+</ul></li>
+<li>within <code>configure.ac</code>
+
+<ul>
+<li>invoke <code>AC_CONFIG_TESTDIR</code> on <code>tests</code></li>
+<li>invoke <code>AC_CONFIG_FILES</code> on <code>tests/Makefile</code></li>
+</ul></li>
+<li>within <code>Makefile.am</code>, add <code>tests</code> to your <code>SUBDIRS</code> variable</li>
+</ul>
+
+<p>I consider myself to have barely-better-than-average competence with the
+autotools, but getting this set up was moderately difficult for me. The time
+investment was a little more than a week, and I can&rsquo;t say for sure if it was
+worth it. My m4 skills are almost non-existent&mdash;I don&rsquo;t know if I can maintain
+a sane testing methodology with an unfamiliar language. Whatever; I did it, I
+learned something, and maybe I&rsquo;ve got something worth keeping.</p>
+
+<p>Check out <a href="https://github.com/rubicks/barry">my barry project</a> if you want to see what I did.</p>
+
+  <p class="small gray"><time datetime="2015-01-04">Jan 04, 2015</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>
