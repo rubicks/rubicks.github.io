@@ -52,7 +52,7 @@ ISP. I don&amp;rsquo;t know why (or how) &lt;a href=&#34;https://wiki.archlinux.
 my &lt;code&gt;/etc/resolv.conf&lt;/code&gt; but I &lt;em&gt;do&lt;/em&gt; know that I didn&amp;rsquo;t care to find out. My first
 priority was to restore DNS.&lt;/p&gt;
 
-&lt;p&gt;Did you know google runs nameservers that just anyone use? I did. After I
+&lt;p&gt;Did you know google runs nameservers that just &lt;em&gt;anyone&lt;/em&gt; can use? I did. After I
 &lt;a href=&#34;https://wiki.archlinux.org/index.php/Network_configuration&#34;&gt;read about it&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Then, I made my &lt;code&gt;/etc/resolv.conf&lt;/code&gt; look like this:&lt;/p&gt;
