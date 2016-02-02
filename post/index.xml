@@ -18,31 +18,31 @@
       <description>&lt;p&gt;You know that feeling you get when you find a new
 (tool|library|framework|machine) and start thinking, &amp;ldquo;OMG. This is exactly what
 I need to solve this problem I&amp;rsquo;ve been having.&amp;ldquo;? That&amp;rsquo;s the way I felt about
-&lt;a href=&#34;hugo&#34;&gt;&lt;code&gt;hugo&lt;/code&gt;&lt;/a&gt; when I first read about it.&lt;/p&gt;
+&lt;a href=&#34;https://gohugo.io&#34;&gt;&lt;code&gt;hugo&lt;/code&gt;&lt;/a&gt; when I first read about it.&lt;/p&gt;
 
-&lt;p&gt;My old static site generator was &lt;a href=&#34;hakyll&#34;&gt;hakyll&lt;/a&gt;. Hakyll is a very nice and
-very capable static site generator modelled on &lt;a href=&#34;jekyll&#34;&gt;jekyll&lt;/a&gt; and implemented
-in &lt;a href=&#34;haskell&#34;&gt;&lt;code&gt;haskell&lt;/code&gt;&lt;/a&gt;. My problem with hakyll is one of availability&amp;mdash;my
-CI service of choice (&lt;a href=&#34;travis&#34;&gt;Travis&lt;/a&gt;) doesn&amp;rsquo;t have hakyll installed on their
-default images.&lt;/p&gt;
+&lt;p&gt;My old static site generator was &lt;a href=&#34;https://jaspervdj.be/hakyll&#34;&gt;hakyll&lt;/a&gt;. Hakyll is a very nice and
+very capable static site generator modelled on &lt;a href=&#34;https://jekyllrb.com/&#34;&gt;jekyll&lt;/a&gt; and implemented
+in &lt;a href=&#34;https://www.haskell.org&#34;&gt;&lt;code&gt;haskell&lt;/code&gt;&lt;/a&gt;. My problem with hakyll is one of availability&amp;mdash;my
+&lt;a href=&#34;https://travis-ci.org/&#34;&gt;CI service of choice&lt;/a&gt; doesn&amp;rsquo;t have hakyll installed on their default
+images.&lt;/p&gt;
 
 &lt;p&gt;Now, I&amp;rsquo;m no stranger to bending remote virtual machines to my will. I can do
 the debug-from-a-distance dance as well as anyone. Many months ago, when I was
 fresh and new to hakyll, I spent hours reading error logs spat by distant
-Travis machines, pawing through dependencies, and &lt;a href=&#34;cabal&#34;&gt;&lt;code&gt;cabal&lt;/code&gt;&lt;/a&gt;
+Travis machines, pawing through dependencies, and &lt;a href=&#34;https://www.haskell.org/cabal/&#34;&gt;&lt;code&gt;cabal&lt;/code&gt;&lt;/a&gt;
 &lt;code&gt;install&lt;/code&gt;ing package after package. It worked, eventually. I won my battle
 against the &lt;code&gt;cabal&lt;/code&gt; and the pipeline&amp;mdash;such as it was&amp;mdash;actually worked. It
 was slow as hell (because of &lt;code&gt;cabal&lt;/code&gt;, or &lt;code&gt;haskell&lt;/code&gt;, or the JVM, or
 something) but it worked nonetheless.&lt;/p&gt;
 
 &lt;p&gt;Then something changed. Maybe Travis upgraded the image. Maybe the &lt;code&gt;cabal&lt;/code&gt;
-grew restless. Maybe &lt;a href=&#34;https://xkcd.com/378/&#34;&gt;cosmic rays&lt;/a&gt;. I didn&amp;rsquo;t know and
-didn&amp;rsquo;t care. I &lt;em&gt;absolutely did&lt;/em&gt; know that didn&amp;rsquo;t have it in me to fight the
+grew restless. Maybe &lt;a href=&#34;https://xkcd.com/378&#34;&gt;cosmic rays&lt;/a&gt;. I didn&amp;rsquo;t know and didn&amp;rsquo;t
+care. I &lt;em&gt;absolutely did&lt;/em&gt; know that didn&amp;rsquo;t have it in me to fight the
 &lt;code&gt;cabal&lt;/code&gt; anew. I went looking for something else, something easier but not
 necessarily better.&lt;/p&gt;
 
 &lt;p&gt;Hugo is what I found. Hugo wins in all of the ways hakyll failed me. Hugo is
-implemented in &lt;a href=&#34;go&#34;&gt;&lt;code&gt;go&lt;/code&gt;&lt;/a&gt;, which makes it (without much hyperbole)
+implemented in &lt;a href=&#34;https://golang.org&#34;&gt;&lt;code&gt;go&lt;/code&gt;&lt;/a&gt;, which makes it (without much hyperbole)
 available &lt;em&gt;everywhere&lt;/em&gt; and faster than &lt;em&gt;anything&lt;/em&gt;. Even over my feeble DSL ISP,
 I can install hugo and its dependencies in 2 minutes. Even on my underpowered
 laptop, I can build my entire site in 63 ms. Sixty-three milliseconds!!! Behold

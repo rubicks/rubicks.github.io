@@ -31,31 +31,31 @@
   <p>You know that feeling you get when you find a new
 (tool|library|framework|machine) and start thinking, &ldquo;OMG. This is exactly what
 I need to solve this problem I&rsquo;ve been having.&ldquo;? That&rsquo;s the way I felt about
-<a href="hugo"><code>hugo</code></a> when I first read about it.</p>
+<a href="https://gohugo.io"><code>hugo</code></a> when I first read about it.</p>
 
-<p>My old static site generator was <a href="hakyll">hakyll</a>. Hakyll is a very nice and
-very capable static site generator modelled on <a href="jekyll">jekyll</a> and implemented
-in <a href="haskell"><code>haskell</code></a>. My problem with hakyll is one of availability&mdash;my
-CI service of choice (<a href="travis">Travis</a>) doesn&rsquo;t have hakyll installed on their
-default images.</p>
+<p>My old static site generator was <a href="https://jaspervdj.be/hakyll">hakyll</a>. Hakyll is a very nice and
+very capable static site generator modelled on <a href="https://jekyllrb.com/">jekyll</a> and implemented
+in <a href="https://www.haskell.org"><code>haskell</code></a>. My problem with hakyll is one of availability&mdash;my
+<a href="https://travis-ci.org/">CI service of choice</a> doesn&rsquo;t have hakyll installed on their default
+images.</p>
 
 <p>Now, I&rsquo;m no stranger to bending remote virtual machines to my will. I can do
 the debug-from-a-distance dance as well as anyone. Many months ago, when I was
 fresh and new to hakyll, I spent hours reading error logs spat by distant
-Travis machines, pawing through dependencies, and <a href="cabal"><code>cabal</code></a>
+Travis machines, pawing through dependencies, and <a href="https://www.haskell.org/cabal/"><code>cabal</code></a>
 <code>install</code>ing package after package. It worked, eventually. I won my battle
 against the <code>cabal</code> and the pipeline&mdash;such as it was&mdash;actually worked. It
 was slow as hell (because of <code>cabal</code>, or <code>haskell</code>, or the JVM, or
 something) but it worked nonetheless.</p>
 
 <p>Then something changed. Maybe Travis upgraded the image. Maybe the <code>cabal</code>
-grew restless. Maybe <a href="https://xkcd.com/378/">cosmic rays</a>. I didn&rsquo;t know and
-didn&rsquo;t care. I <em>absolutely did</em> know that didn&rsquo;t have it in me to fight the
+grew restless. Maybe <a href="https://xkcd.com/378">cosmic rays</a>. I didn&rsquo;t know and didn&rsquo;t
+care. I <em>absolutely did</em> know that didn&rsquo;t have it in me to fight the
 <code>cabal</code> anew. I went looking for something else, something easier but not
 necessarily better.</p>
 
 <p>Hugo is what I found. Hugo wins in all of the ways hakyll failed me. Hugo is
-implemented in <a href="go"><code>go</code></a>, which makes it (without much hyperbole)
+implemented in <a href="https://golang.org"><code>go</code></a>, which makes it (without much hyperbole)
 available <em>everywhere</em> and faster than <em>anything</em>. Even over my feeble DSL ISP,
 I can install hugo and its dependencies in 2 minutes. Even on my underpowered
 laptop, I can build my entire site in 63 ms. Sixty-three milliseconds!!! Behold
