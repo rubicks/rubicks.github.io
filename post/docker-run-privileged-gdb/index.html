@@ -1,0 +1,59 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>words about code</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">words about code</a></h1>
+      <p></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="http://rubicks.github.io/post/docker-run-privileged-gdb/" title="docker run privileged gdb">docker run privileged gdb</a></h1>
+  <p>Does this happen to you?</p>
+
+<pre><code>$ docker run --rm -it my-image gdb -ex run /path/to/my/program
+ ...
+Starting program: /path/to/my/program
+warning: Error disabling address space randomization: Operation not permitted
+</code></pre>
+
+<p>This is really bad because <a href="https://www.gnu.org/software/gdb/"><code>gdb</code></a> depends on a <em>non</em>-randomized address
+space for <em>lots</em> of things, including but not limited to setting breakpoints.</p>
+
+<p>Infuriatingly, this occurred only within a <a href="https://docs.docker.com/machine/"><code>docker-machine</code></a>
+(<a href="http://boot2docker.io/"><code>boot2docker</code></a>) virtual machine&mdash;my <a href="https://www.archlinux.org">Arch Linux</a> native
+<a href="https://www.docker.com/"><code>docker</code></a> host was unaffected.</p>
+
+<p>Here&rsquo;s what fixed it for me:</p>
+
+<pre><code>$ docker run --privileged --rm -it my-image gdb -ex run /path/to/my/program
+</code></pre>
+
+<p>That&rsquo;s right, the magic flag is <code>--privileged</code>. Safety be damned&mdash;this is what
+software debugging requires.</p>
+
+  <p class="small gray"><time datetime="2016-02-23">Feb 23, 2016</time></p>
+</article>
+</main>
+</div>
+</body>
+</html>

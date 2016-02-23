@@ -6,8 +6,39 @@
     <description>Recent content on words about code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Feb 2016 15:56:58 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 23 Feb 2016 10:44:13 -0500</lastBuildDate>
     <atom:link href="http://rubicks.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>docker run privileged gdb</title>
+      <link>http://rubicks.github.io/post/docker-run-privileged-gdb/</link>
+      <pubDate>Tue, 23 Feb 2016 10:44:13 -0500</pubDate>
+      
+      <guid>http://rubicks.github.io/post/docker-run-privileged-gdb/</guid>
+      <description>&lt;p&gt;Does this happen to you?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run --rm -it my-image gdb -ex run /path/to/my/program
+ ...
+Starting program: /path/to/my/program
+warning: Error disabling address space randomization: Operation not permitted
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is really bad because &lt;a href=&#34;https://www.gnu.org/software/gdb/&#34;&gt;&lt;code&gt;gdb&lt;/code&gt;&lt;/a&gt; depends on a &lt;em&gt;non&lt;/em&gt;-randomized address
+space for &lt;em&gt;lots&lt;/em&gt; of things, including but not limited to setting breakpoints.&lt;/p&gt;
+
+&lt;p&gt;Infuriatingly, this occurred only within a &lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;&lt;code&gt;docker-machine&lt;/code&gt;&lt;/a&gt;
+(&lt;a href=&#34;http://boot2docker.io/&#34;&gt;&lt;code&gt;boot2docker&lt;/code&gt;&lt;/a&gt;) virtual machine&amp;mdash;my &lt;a href=&#34;https://www.archlinux.org&#34;&gt;Arch Linux&lt;/a&gt; native
+&lt;a href=&#34;https://www.docker.com/&#34;&gt;&lt;code&gt;docker&lt;/code&gt;&lt;/a&gt; host was unaffected.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what fixed it for me:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run --privileged --rm -it my-image gdb -ex run /path/to/my/program
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s right, the magic flag is &lt;code&gt;--privileged&lt;/code&gt;. Safety be damned&amp;mdash;this is what
+software debugging requires.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>hugo</title>
@@ -605,57 +636,6 @@ Yap&amp;rsquo;s deploy script to make &lt;a href=&#34;https://github.com/rubicks
 &lt;/ul&gt;
 
 &lt;p&gt;Pretty sweet.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>xmodmap</title>
-      <link>http://rubicks.github.io/2014/04/16/xmodmap/</link>
-      <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://rubicks.github.io/2014/04/16/xmodmap/</guid>
-      <description>&lt;p&gt;I can&amp;rsquo;t clain I&amp;rsquo;ve been running the Ubuntu distro since the dim dark ages, but I
-have used every release since 6.06 &amp;ldquo;Dapper Drake&amp;rdquo;. Successive upgrades have
-taught me two things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;backup before the upgrade&lt;/li&gt;
-&lt;li&gt;fix the X configuration files after the upgrade&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The first is just good sense. The last is probably a symptom of my slightly
-uncommon setup. Indeed, I run the &lt;a href=&#34;http://www.nongnu.org/ratpoison&#34;&gt;ratpoison&lt;/a&gt; window manager and
-nearly all of my daily workflow happens in xterm and emacs. I&amp;rsquo;ve run this way
-for the past four years or so.&lt;/p&gt;
-
-&lt;p&gt;In that time, every Ubuntu upgrade has consistently broken something about my
-setup. Nearly always, it&amp;rsquo;s my right Alt (Meta, whatever) key behavior. &lt;code&gt;xev&lt;/code&gt;
-says my right alt key is &lt;code&gt;ISO_Level3_Shift&lt;/code&gt;. This makes for a nice surprise in
-emacs when right-alt-x does NOT give me the &lt;code&gt;M-x&lt;/code&gt; I need. The most recent fix
-involved &lt;a href=&#34;https://wiki.archlinux.org/index.php/Xmodmap&#34;&gt;xmodmap&lt;/a&gt; and its &lt;code&gt;~/.Xmodmap&lt;/code&gt;:&lt;/p&gt;
-
-
-clear Mod1
-keycode 108 = Alt_R NoSymbol Alt_R
-add Mod1 = Alt_L Alt_R
-
-
-&lt;p&gt;Since I already had&lt;/p&gt;
-
-
-exec xmodmap .Xmodmap
-
-
-&lt;p&gt;in my &lt;code&gt;~/.ratpoisonrc&lt;/code&gt;, I thought I was good. I wasn&amp;rsquo;t. Somehow, the execution
-of xmodmap was failing silently on login. I was just about to give up hope when
-I found &lt;a href=&#34;http://askubuntu.com/questions/361128/why-did-13-10-break-my-custom-keyboard-layout&#34;&gt;a similarly afflicted user&lt;/a&gt;. Apparently, X is recompiling and
-reusing keyboard layouts.&lt;/p&gt;
-
-&lt;p&gt;As if that wasn&amp;rsquo;t enough, control-(left|right) was broken in xterm; it wasn&amp;rsquo;t
-skipping words like it should. Copying &lt;code&gt;/etc/inputrc&lt;/code&gt; to &lt;code&gt;~/.inputrc&lt;/code&gt; fixed it,
-but I have no idea why.&lt;/p&gt;
-
-&lt;p&gt;Not cool, Ubuntu. One of these days I&amp;rsquo;ll have to jump ship to &lt;a href=&#34;https://archlinux.org/&#34;&gt;Arch&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

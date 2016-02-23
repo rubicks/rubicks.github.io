@@ -27,6 +27,10 @@
 <main class="posts">
   <article class="post">
     
+    <h1><a href="http://rubicks.github.io/post/docker-run-privileged-gdb/">docker run privileged gdb</a></h1>
+    <p>Does this happen to you? $ docker run --rm -it my-image gdb -ex run /path/to/my/program ... Starting program: /path/to/my/program warning: Error disabling address space randomization: Operation not permitted This is really bad because gdb depends on a non-randomized address space for lots of things, including but not limited to setting breakpoints. Infuriatingly, this occurred only within a docker-machine (boot2docker) virtual machine&mdash;my Arch Linux native docker host was unaffected. Here&rsquo;s what fixed it for me: $ docker run --privileged --rm -it my-image gdb -ex run /path/to/my/program That&rsquo;s right, the magic flag is --privileged.</p>
+    <p class="small"><a href="http://rubicks.github.io/post/docker-run-privileged-gdb/">Read More »</a></p>
+    
     <h1><a href="http://rubicks.github.io/post/hugo/">hugo</a></h1>
     <p>You know that feeling you get when you find a new (tool|library|framework|machine) and start thinking, &ldquo;OMG. This is exactly what I need to solve this problem I&rsquo;ve been having.&ldquo;? That&rsquo;s the way I felt about hugo when I first read about it. My old static site generator was hakyll. Hakyll is a very nice and very capable static site generator modelled on jekyll and implemented in haskell. My problem with hakyll is one of availability&mdash;my CI service of choice doesn&rsquo;t have hakyll installed on their default images.</p>
     <p class="small"><a href="http://rubicks.github.io/post/hugo/">Read More »</a></p>
